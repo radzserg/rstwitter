@@ -1,6 +1,9 @@
 defmodule RsTwitter.Auth do
   alias RsTwitter.Credentials
 
+  @doc """
+  Append Authorization header when user credentials are not provided
+  """
   def append_authorization_header(headers, method, url, body, user_credentials)
       when is_nil(user_credentials) do
     {consumer_key, consumer_secret} = fetch_consumer_credentials()
@@ -18,6 +21,9 @@ defmodule RsTwitter.Auth do
     headers ++ [header]
   end
 
+  @doc """
+  Append Authorization header when user credentials are provided
+  """
   def append_authorization_header(headers, method, url, body, user_credentials = %Credentials{}) do
     {consumer_key, consumer_secret} = fetch_consumer_credentials()
 

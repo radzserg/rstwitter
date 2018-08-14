@@ -3,7 +3,36 @@ defmodule RsTwitter do
 
   @moduledoc """
   Twitter API SDK
+
+  Add your twitter app credentials to your app config
+  config :rs_twitter,
+    consumer_key: "your_app_consumer_key",
+    consumer_secret: "your_app_consumer_secret"
+
+  iex(1)> credentials = %RsTwitter.Credentials{token: "your_user_token", token_secret: "your_user_secret"}
+  iex(4)> request = %RsTwitter.Request{endpoint: "followers/ids", parameters: %{"user_id" => 123}, credentials: credentials}
+  iex(5)> RsTwitter.request(request)
+    {:ok,
+     %RsTwitter.Response{
+       body: %{
+         "ids" => [55555555, 55555556, ...],
+         "next_cursor" => 1593278910906579502,
+         "next_cursor_str" => "1593278910906579502",
+         "previous_cursor" => 0,
+         "previous_cursor_str" => "0"
+       },
+       headers: [
+         ....
+         {"x-rate-limit-limit", "15"},
+         {"x-rate-limit-remaining", "12"},
+         {"x-rate-limit-reset", "1534264549"},
+         {"x-response-time", "172"},
+       ],
+       status_code: 200
+     }}
+
   """
+
   @twitter_url "https://api.twitter.com/1.1/"
 
   @doc """
