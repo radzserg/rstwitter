@@ -1,4 +1,7 @@
 defmodule RsTwitter do
+
+  @http_client Application.get_env(:rs_twitter, :http_client)
+
   @moduledoc """
   Twitter API SDK
   """
@@ -12,11 +15,10 @@ defmodule RsTwitter do
     body = build_body(request)
 
     headers = []
-      |> RsTwitter.Auth.build_authorization_header(request.method, url, body, request.credentials)
+      |> RsTwitter.Auth.append_authorization_header(request.method, url, body, request.credentials)
 
-    HTTPoison.start
-    HTTPoison.request(request.method, url, body, headers)
-    |> handle_response
+    @http_client.request(request.method, url, body, headers)
+      |> handle_response
   end
 
   defp handle_response({:ok, response = %HTTPoison.Response{}}) do

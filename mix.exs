@@ -24,6 +24,7 @@ defmodule RsTwitter.MixProject do
       {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
       {:oauther, "~> 1.1"},
+      {:mox, "~> 0.4", only: :test},
     ]
   end
 end

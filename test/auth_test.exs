@@ -1,5 +1,5 @@
 defmodule RsTwitterTest.Auth do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest RsTwitter.Auth
 
   test "it append Authorization header" do
@@ -14,7 +14,7 @@ defmodule RsTwitterTest.Auth do
 
   defp fetch_header(headers, name) do
     name = String.downcase(name)
-    header = Enum.find(headers, fn({header_name, value}) ->
+    header = Enum.find(headers, fn({header_name, _value}) ->
       String.downcase(header_name) == name
     end)
     case header do
