@@ -11,4 +11,9 @@ defmodule RsTwitter.Response do
     remainging = fetch_header(response.headers, "x-rate-limit-remaining")
     if remainging, do: String.to_integer(remainging), else: nil
   end
+
+  def rate_limit_reset(response = %RsTwitter.Response{}) do
+    remainging = fetch_header(response.headers, "x-rate-limit-reset")
+    if remainging, do: DateTime.from_unix!(String.to_integer(remainging)), else: nil
+  end
 end

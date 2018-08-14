@@ -2,6 +2,8 @@ defmodule RsTwitterTest.Auth do
   use ExUnit.Case, async: true
   doctest RsTwitter.Auth
 
+  import RsTwitter.Http.Headers, only: [fetch_header: 2]
+
   test "it append Authorization header" do
     user_credentials = %RsTwitter.Credentials{token: "some-token", token_secret: "secret"}
     url = "http://example.com"
@@ -12,19 +14,5 @@ defmodule RsTwitterTest.Auth do
       |> RsTwitter.Auth.append_authorization_header(:get, url, params, user_credentials)
 
     assert fetch_header(headers, "Authorization")
-  end
-
-  defp fetch_header(headers, name) do
-    name = String.downcase(name)
-
-    header =
-      Enum.find(headers, fn {header_name, _value} ->
-        String.downcase(header_name) == name
-      end)
-
-    case header do
-      {_name, value} -> value
-      _ -> nil
-    end
   end
 end

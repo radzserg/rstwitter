@@ -12,6 +12,16 @@ defmodule RsTwitterTest.Response do
     refute RsTwitter.Response.rate_limit_remaining(response)
   end
 
+  test "fetch rate_limit_reset" do
+    response = %RsTwitter.Response{body: nil, status_code: 200, headers: headers()}
+    assert 1_534_246_050 == DateTime.to_unix(RsTwitter.Response.rate_limit_reset(response))
+  end
+
+  test "fetch rate_limit_reset returns nil" do
+    response = %RsTwitter.Response{body: nil, status_code: 200, headers: []}
+    refute RsTwitter.Response.rate_limit_reset(response)
+  end
+
   defp headers() do
     [
       {"x-frame-options", "SAMEORIGIN"},
