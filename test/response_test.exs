@@ -30,4 +30,11 @@ defmodule RsTwitterTest.Response do
       {"x-rate-limit-reset", "1534246050"}
     ]
   end
+
+  test "if response is successfull" do
+    response = %RsTwitter.Response{status_code: 200, body: nil, headers: []}
+    assert RsTwitter.Response.success?(response)
+    response = %RsTwitter.Response{status_code: 400, body: nil, headers: []}
+    refute RsTwitter.Response.success?(response)
+  end
 end
