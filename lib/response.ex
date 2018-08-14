@@ -29,4 +29,26 @@ defmodule RsTwitter.Response do
     remainging = fetch_header(response.headers, "x-rate-limit-reset")
     if remainging, do: DateTime.from_unix!(String.to_integer(remainging)), else: nil
   end
+
+  @doc """
+  Defines if response has error code
+  """
+  def has_error_code?(response = %RsTwitter.Response{}, code) when is_integer(code) do
+    has_error_code?(response, [code])
+  end
+
+  @doc """
+  Defines if response has any of errors codes
+  """
+  def has_error_code?(%RsTwitter.Response{body: %{"errors" => errors}}, codes)
+      when is_list(codes) do
+    error =
+      Enum.find(errors, fn error ->
+        Enum.member?(codes, error["code"])
+      end)
+
+    !is_nil(error)
+  end
+
+  def has_error_code?(_, _), do: false
 end
