@@ -22,6 +22,4 @@ defmodule RsTwitterTest.Auth do
       _ -> nil
     end
   end
-
-
 end

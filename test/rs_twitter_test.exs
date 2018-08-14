@@ -11,7 +11,7 @@ defmodule RsTwitterTest do
       status_code: 200
     }
     RsTwitter.Http.ClientMock
-      |> expect(:request, fn (:get, _url, _body, _headers) -> {:ok, response} end)
+      |> expect(:request, fn (:get, "https://api.twitter.com/1.1/users/lookup.json?screen_name=johndoe", [], [{"Authorization", _sign}]) -> {:ok, response} end)
 
     credentials = %RsTwitter.Credentials{token: "token", token_secret: "secret"}
     request = %RsTwitter.Request{endpoint: "users/lookup", parameters: %{"screen_name" => "johndoe"},
@@ -24,7 +24,4 @@ defmodule RsTwitterTest do
     }
     assert {:ok, response} == RsTwitter.request(request)
   end
-
-
-
 end
