@@ -34,5 +34,4 @@ config :rs_twitter,
   consumer_secret: "UrAhvrrvuq1XCKnWSqOJ7xEQKtZo1z11SmY7Y3Uu5B9syW5c82",
   http_client: RsTwitter.Http.Client
 
-
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
