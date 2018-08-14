@@ -31,7 +31,6 @@ use Mix.Config
 
 config :rs_twitter,
   consumer_key: "aSGSH2LQOE1EQttQRWiWK6rIA",
-  consumer_secret: "UrAhvrrvuq1XCKnWSqOJ7xEQKtZo1z11SmY7Y3Uu5B9syW5c82",
-  http_client: RsTwitter.Http.Client
+  consumer_secret: "UrAhvrrvuq1XCKnWSqOJ7xEQKtZo1z11SmY7Y3Uu5B9syW5c82"
 
 import_config "#{Mix.env()}.exs"

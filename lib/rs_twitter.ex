@@ -1,5 +1,5 @@
 defmodule RsTwitter do
-  @http_client Application.get_env(:rs_twitter, :http_client)
+  @http_client Application.get_env(:rs_twitter, :http_client, RsTwitter.Http.Client)
 
   @moduledoc """
   Twitter API SDK
