@@ -15,4 +15,15 @@ defmodule RsTwitterTest.Auth do
 
     assert fetch_header(headers, "Authorization")
   end
+
+  test "it append Authorization header without user credentials" do
+    url = "http://example.com"
+    params = %{"screen_name" => "johndoe"} |> Map.to_list()
+
+    headers =
+      [{"X-Header", "some value"}]
+      |> RsTwitter.Auth.append_authorization_header(:get, url, params, nil)
+
+    assert fetch_header(headers, "Authorization")
+  end
 end
