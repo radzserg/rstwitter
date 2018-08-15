@@ -40,18 +40,17 @@ defmodule RsTwitter do
   """
   def request(request = %RsTwitter.Request{}) do
     url = build_url(request)
-    body = build_body(request)
 
     headers =
-      []
+      [{"Content-Type", "application/json"}]
       |> RsTwitter.Auth.append_authorization_header(
         request.method,
         url,
-        body,
+        [],
         request.credentials
       )
 
-    @http_client.request(request.method, url, body, headers)
+    @http_client.request(request.method, url, [], headers)
     |> handle_response
   end
 
@@ -65,22 +64,10 @@ defmodule RsTwitter do
     {:error, reason}
   end
 
-  defp build_body(request = %RsTwitter.Request{}) do
-    if request.method == :get do
-      []
-    else
-      Map.to_list(request.parameters)
-    end
-  end
-
   defp build_url(request = %RsTwitter.Request{}) do
     url = @twitter_url <> request.endpoint <> ".json"
 
-    if request.method == :get do
-      query_string = URI.encode_query(request.parameters)
-      if query_string == "", do: url, else: url <> "?#{query_string}"
-    else
-      url
-    end
+    query_string = URI.encode_query(request.parameters)
+    if query_string == "", do: url, else: url <> "?#{query_string}"
   end
 end
