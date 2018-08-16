@@ -58,4 +58,4 @@ end
 
 **Documentation**
 
-[Browse documentation(https://hexdocs.pm/rs_twitter/)
+[Browse documentation](https://hexdocs.pm/rs_twitter/)
