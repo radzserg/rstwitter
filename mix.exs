@@ -11,7 +11,7 @@ defmodule RsTwitter.MixProject do
 
       description: "Twitter Client",
       package: package(),
-      source_url: "https://github.com/radzserg/rstwitter"
+      source_url: "https://github.com/radzserg/rstwitter",
 
       # meta data for docs
       name: "RsTwitter",
