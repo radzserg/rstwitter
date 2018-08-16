@@ -2,23 +2,23 @@
 
 **Twitter Client for Elixir**
 
-This is low level twitter client. The idea behind this package is not to define special functions for each endpoint, 
+This is low level twitter client. The idea behind this package is not to define special functions for each endpoint,
 but use generic request structure
 
 `%RsTwitter.Request{endpoint: "followers/ids", parameters: %{"user_id" => 123}, credentials: credentials}`
 
 
-Such request structure can do API request to any twitter API endpoint. 
+Such request structure can do API request to any twitter API endpoint.
 Just browse [API Docs](https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference)
 and create appropriate `%RsTwitter.Request{}`
- 
+
 ```elixir
 %RsTwitter.Request{endpoint: "followers/ids", parameters: %{"user_id" => 123}, credentials: credentials}
 %RsTwitter.Request{endpoint: "users/lookup", parameters: %{"screen_name" => "radzserg"}, credentials: credentials}
 %RsTwitter.Request{method: :post, endpoint: "friendships/create", parameters: %{"screen_name" => "radzserg"}, credentials: credentials}
 # discover docs to build your request
-``` 
- 
+```
+
 You will get raw response object and it's your responsibility how to use it.
 
 ```elixir
@@ -35,15 +35,15 @@ You will get raw response object and it's your responsibility how to use it.
    },
    headers: [
      {"x-rate-limit-limit", "15"},
-     ... 
+     ...
    ],
    status_code: 200
  }}
 
 
-``` 
- 
- 
+```
+
+
 ## Installation
 
 Add `rs_twitter` to your list of dependencies in `mix.exs`:
@@ -58,6 +58,4 @@ end
 
 **Documentation**
 
-Browse documentation in [Hex]()
-
-
+[Browse documentation(https://hexdocs.pm/rs_twitter/)
