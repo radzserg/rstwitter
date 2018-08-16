@@ -56,12 +56,8 @@ def deps do
 end
 ```
 
-**TODO**
+**Documentation**
 
+Browse documentation in [Hex]()
 
-**References**
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/rs_twitter](https://hexdocs.pm/rs_twitter).
 

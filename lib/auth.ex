@@ -4,6 +4,7 @@ defmodule RsTwitter.Auth do
   @doc """
   Append Authorization header when user credentials are not provided
   """
+  @spec append_authorization_header(list(), atom(), String.t(), [], RsTwitter.Credentials.t() | nil) :: list()
   def append_authorization_header(headers, method, url, body, user_credentials)
       when is_nil(user_credentials) do
     {consumer_key, consumer_secret} = fetch_consumer_credentials()

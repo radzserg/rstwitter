@@ -5,6 +5,8 @@ defmodule RsTwitter.Response do
   @enforce_keys [:status_code, :body, :headers]
   defstruct status_code: nil, body: nil, headers: []
 
+  @type t :: %RsTwitter.Response{status_code: integer(), body: String.t(), headers: list()}
+
   import RsTwitter.Http.Headers, only: [fetch_header: 2]
 
   @doc """

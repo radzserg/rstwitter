@@ -7,7 +7,16 @@ defmodule RsTwitter.MixProject do
       version: "0.1.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+
+      name: "RsTwitter",
+      source_url: "https://github.com/radzserg/rstwitter",
+      # homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+      docs: [
+        main: "RsTwitter", # The main page in the docs
+        #logo: "path/to/logo.png",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -24,7 +33,8 @@ defmodule RsTwitter.MixProject do
       {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
       {:oauther, "~> 1.1"},
-      {:mox, "~> 0.4", only: :test}
+      {:mox, "~> 0.4", only: :test},
+      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
     ]
   end
 end
