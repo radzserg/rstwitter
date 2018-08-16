@@ -9,6 +9,11 @@ defmodule RsTwitter.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
+      description: "Twitter Client",
+      package: package(),
+      source_url: "https://github.com/radzserg/rstwitter"
+
+      # meta data for docs
       name: "RsTwitter",
       source_url: "https://github.com/radzserg/rstwitter",
       # homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
@@ -17,6 +22,14 @@ defmodule RsTwitter.MixProject do
         #logo: "path/to/logo.png",
         extras: ["README.md"]
       ]
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["Sergey Radzishevskyi"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/radzserg/rstwitter"}
     ]
   end
 
