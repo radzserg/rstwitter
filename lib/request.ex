@@ -6,5 +6,5 @@ defmodule RsTwitter.Request do
   defstruct endpoint: nil, method: :get, parameters: %{}, credentials: nil
 
   @type t :: %RsTwitter.Request{endpoint: String.t(), method: atom, parameters: map(),
-    credentials: RsTwitter.Credentials | nil}
+    credentials: RsTwitter.Credentials.t() | nil}
 end
